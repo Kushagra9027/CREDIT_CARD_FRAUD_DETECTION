@@ -8,6 +8,8 @@ This project focuses on detecting fraudulent credit card transactions using mach
 
 The objective of this project is to build and evaluate machine learning models capable of distinguishing between legitimate and fraudulent transactions using historical transaction data.
 
+> **Note:** The dataset is not included in this repository due to GitHub file size limitations. Please download it from the Kaggle link provided below.
+
 ---
 
 ## Objective
@@ -27,7 +29,7 @@ The dataset contains anonymized credit card transactions with the following char
 
 * Total Records: 284,807
 * Total Features: 31
-* Target Variable: Class
+* Target Variable: `Class`
 
   * 0 = Legitimate Transaction
   * 1 = Fraudulent Transaction
@@ -46,6 +48,27 @@ The dataset is highly imbalanced, making fraud detection a challenging machine l
 
 ---
 
+## Dataset
+
+The dataset used in this project is publicly available on Kaggle.
+
+**Dataset Link:**
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
+Due to GitHub file size limitations, the dataset is not included in this repository. Please download the dataset and place the `creditcard.csv` file in the project directory before running the notebook.
+
+### Dataset Features
+
+* **Time** – Time elapsed between transactions.
+* **V1 – V28** – PCA-transformed anonymized features.
+* **Amount** – Transaction amount.
+* **Class**
+
+  * 0 = Legitimate Transaction
+  * 1 = Fraudulent Transaction
+
+---
+
 ## Technologies Used
 
 * Python
@@ -54,37 +77,43 @@ The dataset is highly imbalanced, making fraud detection a challenging machine l
 * Matplotlib
 * Seaborn
 * Scikit-Learn
+* Jupyter Notebook
 
 ---
 
 ## Project Workflow
 
-### Data Cleaning
+### 1. Data Cleaning
 
 * Checked for missing values.
 * Removed duplicate records.
-* Verified dataset integrity.
+* Verified dataset quality and consistency.
 
-### Exploratory Data Analysis
+### 2. Exploratory Data Analysis (EDA)
 
-* Class distribution analysis.
-* Transaction amount distribution.
-* Fraud vs Non-Fraud comparison.
-* Correlation analysis.
+* Analyzed class distribution.
+* Visualized transaction amount distributions.
+* Compared fraudulent and non-fraudulent transactions.
+* Performed correlation analysis.
 
-### Data Preprocessing
+### 3. Data Preprocessing
 
-* Standardized Time and Amount features.
-* Split data into training and testing sets.
+* Standardized `Time` and `Amount` features.
+* Split the dataset into training and testing sets.
 
-### Model Building
+### 4. Model Building
 
 The following machine learning models were implemented:
 
-1. Logistic Regression
-2. Random Forest Classifier
+#### Logistic Regression
 
-### Model Evaluation
+Used as a baseline classification model for fraud detection.
+
+#### Random Forest Classifier
+
+Used an ensemble learning approach to improve prediction performance and fraud detection capability.
+
+### 5. Model Evaluation
 
 Models were evaluated using:
 
@@ -96,11 +125,23 @@ Models were evaluated using:
 
 ---
 
+## Exploratory Data Analysis
+
+Key insights obtained during EDA:
+
+* No missing values were found in the dataset.
+* 1,081 duplicate records were identified and removed.
+* The dataset is highly imbalanced, with fraudulent transactions accounting for only 0.17% of all transactions.
+* Transaction amounts exhibit a heavily right-skewed distribution.
+* Several anonymized features showed strong relationships with fraudulent activity.
+
+---
+
 ## Model Performance
 
 ### Logistic Regression
 
-| Metric    | Value  |
+| Metric    | Score  |
 | --------- | ------ |
 | Accuracy  | 99.91% |
 | Precision | 84.85% |
@@ -110,7 +151,7 @@ Models were evaluated using:
 
 ### Random Forest Classifier
 
-| Metric    | Value  |
+| Metric    | Score  |
 | --------- | ------ |
 | Accuracy  | 99.95% |
 | Precision | 97.18% |
@@ -122,22 +163,23 @@ Models were evaluated using:
 
 ## Results
 
-The Random Forest Classifier demonstrated superior performance compared to Logistic Regression.
+The Random Forest Classifier outperformed Logistic Regression across all evaluation metrics.
 
-Key Findings:
+### Key Findings
 
-* Achieved very high precision with minimal false positives.
-* Improved recall, enabling the detection of more fraudulent transactions.
-* Delivered the highest F1 Score and ROC-AUC score.
-* Successfully handled a highly imbalanced dataset.
+* Achieved excellent classification performance.
+* Significantly improved fraud detection recall.
+* Reduced false positive predictions.
+* Delivered the highest F1 Score and ROC-AUC Score.
+* Demonstrated strong effectiveness on a highly imbalanced dataset.
 
 ---
 
-## Feature Importance
+## Feature Importance Analysis
 
 Feature importance analysis was performed using the Random Forest model to identify the most influential variables contributing to fraud detection.
 
-Visualizations were created to better understand model behavior and feature contributions.
+The top features were visualized using a feature importance chart, providing insights into which transaction characteristics were most useful for classification.
 
 ---
 
@@ -145,7 +187,7 @@ Visualizations were created to better understand model behavior and feature cont
 
 This project successfully developed a machine learning-based fraud detection system capable of identifying fraudulent credit card transactions with high accuracy and reliability.
 
-Among the evaluated models, Random Forest achieved the best results:
+Among the evaluated models, Random Forest achieved the best performance:
 
 * Accuracy: 99.95%
 * Precision: 97.18%
@@ -153,17 +195,38 @@ Among the evaluated models, Random Forest achieved the best results:
 * F1 Score: 83.13%
 * ROC-AUC Score: 86.31%
 
-The project demonstrates the effectiveness of machine learning techniques in detecting fraudulent activities and highlights the importance of using Recall, Precision, and F1 Score when working with highly imbalanced datasets.
+The results demonstrate the effectiveness of ensemble learning techniques for fraud detection. Due to the highly imbalanced nature of the dataset, evaluation metrics such as Precision, Recall, F1 Score, and ROC-AUC were prioritized over accuracy alone.
 
 ---
 
-## Future Scope
+## Future Improvements
 
 * Apply SMOTE for class balancing.
 * Perform hyperparameter tuning.
 * Experiment with XGBoost and LightGBM.
 * Deploy the model using Flask or FastAPI.
-* Build a real-time fraud detection dashboard.
+* Build a real-time fraud monitoring dashboard.
+* Implement anomaly detection techniques.
+
+---
+
+## Repository Structure
+
+```text
+Fraud-Detection/
+│
+├── notebooks/
+│   └── Fraud_Detection.ipynb
+│
+├── images/
+│   ├── class_distribution.png
+│   ├── confusion_matrix.png
+│   └── feature_importance.png
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
 
 ---
 
@@ -177,7 +240,12 @@ Project Level: Level 2
 
 ## Author
 
-Kushagra Pandey
+**Kushagra Pandey**
 
 B.Tech Computer Science & Engineering
 Jaypee Institute of Information Technology (JIIT), Noida
+
+### Connect With Me
+
+* GitHub: https://github.com/Kushagra9027
+* LinkedIn: Add your LinkedIn profile link here
